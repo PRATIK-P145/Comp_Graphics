@@ -1,3 +1,6 @@
 *.exe
 *.class
 *.dll
+
+app.c
+app.cpp

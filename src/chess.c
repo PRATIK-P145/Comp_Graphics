@@ -16,8 +16,8 @@ void Draw(){
     glClear(GL_COLOR_BUFFER_BIT);
     glBegin(GL_LINES);
     int d = (yb-ya)/n;
+    
     int yt = ya;
-
     for(int i=0; i<n+1; i++){
         DDALine(xa,yt,xb,yt);
         yt = yt + d;

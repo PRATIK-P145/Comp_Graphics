@@ -18,6 +18,7 @@ void MouseClick(int button, int state, int x, int y){
         if(count == 1){
             xa = x;
             ya = y;
+        
         }else if(count == 2){
             xb = x;
             yb = y;
