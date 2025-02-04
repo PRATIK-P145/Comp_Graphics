@@ -1,6 +1,6 @@
 #include <GL/glut.h>
+//gcc app.c -I"d:\Programs\Comp_Graphics\include" -L"d:\Programs\Comp_Graphics\lib" -lfreeglut -lopengl32 -lgdi32 -lglu32 -o app.exe
 
-// Display callback function
 void display() {
     glClear(GL_COLOR_BUFFER_BIT);  // Clear the color buffer
     glFlush();                     // Render the content immediately
