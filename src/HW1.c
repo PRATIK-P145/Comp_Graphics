@@ -54,17 +54,7 @@ void Draw(){
 int main(int argc,char** argv){
 
     //int xa,ya,xb,yb;
-    printf("Enter Co-ordinates of Bottom-Left Vertex ->\n");
-    printf(" X1 :");
-    scanf("%d",&xa);
-    printf(" Y1 :");
-    scanf("%d",&ya);
-
-    printf("Enter Co-ordinates of Top-Right Vertex ->\n");
-    printf(" X2 :");
-    scanf("%d",&xb);
-    printf(" Y2 :");
-    scanf("%d",&yb);
+    
 
     glutInit(&argc , argv);
     glutInitDisplayMode(GLUT_SINGLE|GLUT_RGB);
@@ -78,8 +68,21 @@ int main(int argc,char** argv){
 
     gluOrtho2D(0,640,0,480);
 
+    printf("Enter Co-ordinates of Bottom-Left Vertex ->\n");
+    printf(" X1 :");
+    scanf("%d",&xa);
+    printf(" Y1 :");
+    scanf("%d",&ya);
+
+    printf("Enter Co-ordinates of Top-Right Vertex ->\n");
+    printf(" X2 :");
+    scanf("%d",&xb);
+    printf(" Y2 :");
+    scanf("%d",&yb);
+
     glutDisplayFunc(Draw);
     glutMainLoop();
+
 
 
   return 0;

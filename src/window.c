@@ -7,27 +7,24 @@ void display() {
 }
 
 int main(int argc, char** argv) {
-    // Initialize GLUT
-    glutInit(&argc, argv);
 
-    // Set display mode
+    glutInit (&argc , argv);
+
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
 
-    // Set initial window position and size
-    glutInitWindowPosition(100, 100);
-    glutInitWindowSize(500, 500);
+    glutInitWindowPosition(0,0);
+    glutInitWindowSize(640,480);
 
-    // Create the window with a title
-    glutCreateWindow("OpenGL GLUT Window");
+    glutCreateWindow("Window");
 
-    // Define the display callback function
+    glClearColor(0.0, 0.0, 0.0, 0);  // Background Color
+    glColor3f(0.0,1.0,0.0);    // Pen color
+
+    gluOrtho2D(0,640,0,480);
+
     glutDisplayFunc(display);
-
-    // Set the clear color (background color)
-    glClearColor(0.0, 0.0, 0.0, 1.0);  // Black background
-
-    // Enter the main loop
     glutMainLoop();
+
 
     return 0;
 }
