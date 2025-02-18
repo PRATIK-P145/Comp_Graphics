@@ -1,92 +1,90 @@
-#include<stdio.h>// it is used to manage input and output
-#include<GL/glut.h> // it is used to create a window and input 
-
-
-void Draw() // it is used to draw graphics on the screen
-{
-glClear(GL_COLOR_BUFFER_BIT);// it is clear the window color which is used previously
-glBegin(GL_LINES);
-glVertex2d(300,300);
-glVertex2d(100,100);
-glEnd();
-glFlush();
-
-
-
-}
-
-int main(int argc,char** argv)
-{
-glutInit(&argc , argv);
-glutInitDisplayMode(GLUT_SINGLE|GLUT_RGB);
-glutInitWindowPosition(0,0);// these lines are used to place window at the top of the the screen
-glutInitWindowSize(640,480);
-glutCreateWindow(" Draw ");
-glClearColor(1.0,1.0,1.0,0);
-glColor3f(0.0,0.0,1.0);
-gluOrtho2D(0,640,0,480);
-glutDisplayFunc(Draw);
-glutMainLoop();
-return 0;
-
-}
-// gcc app.c glad.c -o app -I"d:\Programs\CG\include" -L"d:\Programs\CG\lib" -lfreeglut -lopengl32 -lgdi32 -o app.exe
-//gcc app.c glad.c -o app -I"d:\Programs\CG\include" -L"d:\Programs\CG\lib" -lglfw3dll -lopengl32 -lgdi32
-
-/*#include <glad/glad.h>
-#include <GLFW/glfw3.h>
 #include <stdio.h>
+#include<math.h>
+#include<GL/glut.h>
 
-// Callback function to adjust the viewport when the window is resized
-void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
-    glViewport(0, 0, width, height);
+int xa,ya,xb,yb;
+
+void Rect(int xa, int ya, int xb, int yb){
+
+    glClear(GL_COLOR_BUFFER_BIT);
+    glBegin(GL_LINES);
+
+    for(int i=0; i<2; i++){
+
+        glVertex2d(xa,ya);  glVertex2d(xb,ya);
+        glVertex2d(xa,yb);  glVertex2d(xb,yb);
+        glVertex2d(xa,ya);  glVertex2d(xa,yb);
+        glVertex2d(xb,ya);  glVertex2d(xb,yb);
+
+        int mx1,my1, mx2,my2, mx3,my3, mx4,my4;
+
+        mx1 = (int)(xa+xb)/2;  my1 = ya;
+        mx2 = xb;              my2 = (int)(ya+yb)/2;
+        mx3 = (int)(xa+xb)/2;  my3 = yb;
+        mx4 = xa;              my4 = (int)(ya+yb)/2;
+
+
+        glVertex2d(mx1,my1);  glVertex2d(mx2,my2);
+        glVertex2d(mx2,my2);  glVertex2d(mx3,my3);
+        glVertex2d(mx3,my3);  glVertex2d(mx4,my4);
+        glVertex2d(mx4,my4);  glVertex2d(mx1,my1);
+
+        xa = (mx1+mx2)/2;  ya = (my1+my2)/2;
+        xb = (mx3+mx4)/2;  yb = (my3+my4)/2;
+   }
+    // glVertex2d(xa,ya);  glVertex2d(xb,ya);
+    // glVertex2d(xa,yb);  glVertex2d(xb,yb);
+    // glVertex2d(xa,ya);  glVertex2d(xa,yb);
+    // glVertex2d(xb,ya);  glVertex2d(xb,yb);
+
+
+    glEnd();
+    glFlush();
+
+}
+void Draw(){
+    
+    glClear(GL_COLOR_BUFFER_BIT);
+    Rect(xa,ya,xb,yb);
+    //Rect(100,100,500,300);
 }
 
-int main() {
-    // Initialize GLFW
-    if (!glfwInit()) {
-        printf("Failed to initialize GLFW\n");
-        return -1;
-    }
 
-    // Set GLFW window properties
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);  // OpenGL version 3.x
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);  
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-    // Create a window
-    GLFWwindow* window = glfwCreateWindow(800, 600, "Basic OpenGL Window", NULL, NULL);
-    if (window == NULL) {
-        printf("Failed to create GLFW window\n");
-        glfwTerminate();
-        return -1;
-    }
-    glfwMakeContextCurrent(window);  // Make the window's context current
+int main(int argc,char** argv){
 
-    // Initialize GLAD
-    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
-        printf("Failed to initialize GLAD\n");
-        return -1;
-    }
+    //int xa,ya,xb,yb;
+    
 
-    // Set the viewport
-    glViewport(0, 0, 800, 600);
-    glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+    glutInit(&argc , argv);
+    glutInitDisplayMode(GLUT_SINGLE|GLUT_RGB);
 
-    // Main render loop
-    while (!glfwWindowShouldClose(window)) {
-        // Clear the screen with a color
-        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
+    glutInitWindowPosition(0,0);
+    glutInitWindowSize(640,480);
+    glutCreateWindow(" HW1 ");
 
-        // Swap the buffers and poll for events
-        glfwSwapBuffers(window);
-        glfwPollEvents();
-    }
+    glClearColor(0.0,0.0,0.0,0);
+    glColor3f(0.0,1.0,0.0);
 
-    // Clean up and terminate GLFW
-    glfwTerminate();
-    return 0;
+    gluOrtho2D(0,640,0,480);
+
+    printf("Enter Co-ordinates of Bottom-Left Vertex ->\n");
+    printf(" X1 :");
+    scanf("%d",&xa);
+    printf(" Y1 :");
+    scanf("%d",&ya);
+
+    printf("Enter Co-ordinates of Top-Right Vertex ->\n");
+    printf(" X2 :");
+    scanf("%d",&xb);
+    printf(" Y2 :");
+    scanf("%d",&yb);
+
+    glutDisplayFunc(Draw);
+    glutMainLoop();
+
+
+
+  return 0;
+
 }
-*/
-

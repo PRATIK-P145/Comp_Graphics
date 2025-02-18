@@ -5,7 +5,7 @@ using namespace std;
 
 int v =3;
 
-vector<vector<int>> inp(3,vector<int>(10,0));
+vector<vector<int>> inp(3, vector<int>(10,0));
 vector<vector<int>> T(3,vector<int>(3,0));
 vector<vector<int>> out(3,vector<int>(10,0));
 

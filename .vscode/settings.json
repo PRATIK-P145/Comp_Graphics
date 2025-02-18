@@ -56,6 +56,7 @@
   "C_Cpp_Runner.showCompilationTime": false,
   "C_Cpp_Runner.useLinkTimeOptimization": false,
   "C_Cpp_Runner.msvcSecureNoWarnings": false,
+  "terminal.integrated.cwd": "D:\\Programs\\Comp_Graphics\\src",
   "files.associations": {
     "array": "c",
     "atomic": "c",
