@@ -18,14 +18,16 @@ void render(vector<vector<float>> &arr,int v ){
 void draw(){
     glClear(GL_COLOR_BUFFER_BIT);
     glBegin(GL_LINES);
+    glColor3f(0,0,1);
         glVertex2d(-320,0);
         glVertex2d(320,0);
 
         glVertex2d(0,-240);
         glVertex2d(0,240);
 
+       glColor3f(0,1,0);
         render(input,v);
-        //render(output,v);
+        render(output,v);
 
     glEnd();
     glFlush();
@@ -58,7 +60,7 @@ int main(int argc, char** argv){
         cout<<"Enter Y :";
         cin>>input[1][i];
 
-        input[i][2]=1;
+        input[2][i]=1;
     }
 
     input[0][v] = input[0][0];
@@ -66,8 +68,8 @@ int main(int argc, char** argv){
     input[2][v] = input[2][0];
 
     cout<<"\nInput matrix :\n";
-    for(int j=0; j<=3; j++){
-        for(int k=0; k<v; k++){
+    for(int j=0; j<3; j++){
+        for(int k=0; k<=v; k++){
                cout<<input[j][k]<<" ";
         }
         cout<<"\n";
@@ -96,8 +98,8 @@ int main(int argc, char** argv){
     multiply(input, scale, output, v);
 
     cout<<"Result matrix :\n";
-    for(int j=0; j<=3; j++){
-        for(int k=0; k<v; k++){
+    for(int j=0; j<3; j++){
+        for(int k=0; k<=v; k++){
                cout<<output[j][k]<<" ";
         }
         cout<<"\n";
@@ -108,7 +110,7 @@ int main(int argc, char** argv){
     glutInitWindowSize(640,480);
     glutCreateWindow("Translation");
     glClearColor(0,0,0,0);
-    glColor3f(0,1,0);
+    glColor3f(0,0,1);
     gluOrtho2D(-320,320,-240,240);
     glutDisplayFunc(draw);
 
