@@ -7,3 +7,5 @@ app.c
 app.cpp
 
 .vscode/
+lib/
+include/
