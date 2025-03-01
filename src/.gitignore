@@ -5,3 +5,5 @@
 app.exe
 app.c
 app.cpp
+
+.vscode/
