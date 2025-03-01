@@ -2,9 +2,9 @@
 // #include <vector>
 // using namespace std;
 
-int xa=0, ya=0,  xb=0,  yb=0;
+int x2=0,  y2=0;
 int xi=0, yi=0;
-int xp=0, yp=0;
+int x1=0, y_1=0;
 int count =0;
 int start =1;
 //int arr[] = {1,2,3,4}; 
@@ -29,21 +29,21 @@ void MouseClick(int button, int state, int x, int y){
         if(count == 1){
             xi = x;
             yi = y;
-            xp=xi;
-            yp=yi;
+            x1=xi;  // x-previous
+            y_1=yi;  // y-previous
             
         }else {
-            xb = x;
-            yb = y;
-           Draw(xp,(480-yp),xb,(480-yb));
+            x2 = x;
+            y2 = y;
+           Draw(x2,(480-y2),x1,(480-y_1));
 
-           if(xb==xp && yb == yp){
+           if(x2==x1 && y2 == y_1){
              //glClear(GL_COLOR_BUFFER_BIT);
+             Draw(x2,(480-y2),xi,(480-yi));
              count = 0;
-           
            } 
-           xp = xb;
-           yp = yb;
+           x1 = x2;
+           y_1 = y2;
         }       
     }
 }
