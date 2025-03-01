@@ -1,0 +1,9 @@
+*.exe
+*.class
+*.dll
+
+app.exe
+app.c
+app.cpp
+
+.vscode/
