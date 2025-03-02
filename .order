@@ -1,20 +1,22 @@
 src\.gitignore
 
 src\app.c
-
-src\Quadrant.c
-src\Drag_Ex.c
-src\Polygon.c
-src\mouseLine.c
-src\mouse.c
-src\chess.c
+src\window.c
+src\Rectangle.c
+src\glPolygon.c
+src\BresCircle.c
+src\delayedCircle.c
 src\HW1.c
 src\HW2.c
-src\delayedCircle.c
-src\BresCircle.c
-src\glPolygon.c
-src\Rectangle.c
-src\window.c
+src\chess.c
+src\mouse.c
+src\mouseLine.c
+src\Polygon.c
+src\Drag_ex.c
+src\Quadrant.c
+src\Scaling.c
+src\rotation.c
+
 src\app.exe
 
 src\app.cpp
@@ -29,4 +31,4 @@ src\multipleLine.cpp
 src\glfw3.dll
 src\freeglut.dll
 src\glad.c
-src\Darray.cpp
+src\Darray.cppsrc
