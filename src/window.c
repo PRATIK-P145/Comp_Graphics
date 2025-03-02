@@ -17,8 +17,8 @@ int main(int argc, char** argv) {
 
     glutCreateWindow("Window");
 
-    glClearColor(0.0, 0.0, 0.0, 0);  // Background Color
-    glColor3f(0.0,1.0,0.0);    // Pen color
+    glClearColor(1.0, 1.0, 0.0, 0);  // Background Color
+    glColor3f(0.0,0.0,0.0);    // Pen color
 
     gluOrtho2D(0,640,0,480);
 
