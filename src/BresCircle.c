@@ -17,7 +17,7 @@ void plotCirclePoints(int xc, int yc, int x, int y) {
 }
 
 // Bresenham's Circle Drawing Algorithm
-void drawCircle(int xc, int yc, int r) {
+void BresCircle(int xc, int yc, int r) {
     int x = 0, y = r;
     int d = 3 - 2 * r; // Decision parameter
 
@@ -40,7 +40,7 @@ void drawCircle(int xc, int yc, int r) {
 void display() {
     glClear(GL_COLOR_BUFFER_BIT);
     int xc = 300, yc = 200, r = 200; // Circle center and radius
-    drawCircle(xc, yc, r);
+    BresCircle(xc, yc, r);
 }
 
 // Initialization function for GLUT

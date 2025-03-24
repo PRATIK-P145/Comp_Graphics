@@ -5,7 +5,7 @@ using namespace std;
 int xa, ya,  xb,  yb;
 int count =0;
 struct pt{
-    int x1,y1;
+    int x1,y_1;
 };
 
 vector<pt>Points;
@@ -29,7 +29,7 @@ void Display(){
     glPointSize(5.0);
     glBegin(GL_POINTS);
     for(pt temp: Points){   
-        glVertex2d(temp.x1,temp.y1);   
+        glVertex2d(temp.x1,temp.y_1);   
     }
     glEnd();
     glFlush();

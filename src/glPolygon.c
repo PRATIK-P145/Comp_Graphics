@@ -8,7 +8,7 @@ void Draw(){
     
     glClear(GL_COLOR_BUFFER_BIT);
     
-    glColor3f(0.0f, 1.0f, 1.0f); // Set polygon color (Red)
+    glColor3f(0.0f, 1.0f, 1.0f); // Set polygon color (dark)
     
     glBegin(GL_POLYGON); // Start polygon
         // glVertex2d(-100,-100);

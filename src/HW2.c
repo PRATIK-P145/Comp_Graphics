@@ -20,7 +20,7 @@ void plotCirclePoints(int xc, int yc, int x, int y) {
 }
 
 // Bresenham's Circle Drawing Algorithm
-void drawCircle(int xc, int yc, int r) {
+void BresCircle(int xc, int yc, int r) {
     int x = 0, y = r;
     int d = 3 - 2 * r; // Decision parameter
 
@@ -54,19 +54,19 @@ void Rect(int xa, int ya, int xb, int yb){
 
 
 
-    int mx1,my1, mx2,my2, mx3,my3, mx4,my4;
+    int mx1,my_1, mx2,my2, mx3,my3, mx4,my4;
 
-    mx1 = (int)(xa+xb)/2;  my1 = ya;
+    mx1 = (int)(xa+xb)/2;  my_1 = ya;
     mx2 = xb;              my2 = (int)(ya+yb)/2;
     mx3 = (int)(xa+xb)/2;  my3 = yb;
     mx4 = xa;              my4 = (int)(ya+yb)/2;
 
     sleep(20);
     
-    glVertex2d(mx1,my1);  glVertex2d(mx2,my2);
+    glVertex2d(mx1,my_1);  glVertex2d(mx2,my2);
     glVertex2d(mx2,my2);  glVertex2d(mx3,my3);
     glVertex2d(mx3,my3);  glVertex2d(mx4,my4);
-    glVertex2d(mx4,my4);  glVertex2d(mx1,my1);
+    glVertex2d(mx4,my4);  glVertex2d(mx1,my_1);
 
 
     
@@ -77,7 +77,7 @@ void Rect(int xa, int ya, int xb, int yb){
 
     int r = (diag1 * diag2)/side;
 
-    drawCircle(mx1,my2,r);
+    BresCircle(mx1,my2,r);
 
     glEnd();
     glFlush();
@@ -97,7 +97,7 @@ int main(int argc,char** argv){
     printf("Enter Co-ordinates of Bottom-Left Vertex ->\n");
     printf(" X1 :");
     scanf("%d",&xa);
-    printf(" Y1 :");
+    printf(" y_1 :");
     scanf("%d",&ya);
 
     printf("Enter Co-ordinates of Top-Right Vertex ->\n");

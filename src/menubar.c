@@ -1,15 +1,23 @@
 #include <GL/glut.h>
 #include <stdio.h>
 
+float R=0.0,G=0.0,B=0.0;
+
 void menu(int value) {
     switch (value) {
         case 1:
+            R=1.0; G=0.0; B=0.0;
             printf("Option 1 selected\n");
             break;
         case 2:
+            R=0.0; G=1.0; B=0.0;
             printf("Option 2 selected\n");
             break;
         case 3:
+            R=0.0; G=0.0; B=1.0;
+            printf("Option 3 selected\n");
+            break;
+        case 4:
             printf("Exit selected\n");
             exit(0);
     }
@@ -18,9 +26,10 @@ void menu(int value) {
 
 void createMenu() {
     int menu_id = glutCreateMenu(menu);
-    glutAddMenuEntry("Option 1", 1);
-    glutAddMenuEntry("Option 2", 2);
-    glutAddMenuEntry("Exit", 3);
+    glutAddMenuEntry("Option 1: dark", 1);
+    glutAddMenuEntry("Option 2: light", 2);
+    glutAddMenuEntry("Option 3: BLUE", 3);
+    glutAddMenuEntry("EXIT", 4);
     glutAttachMenu(GLUT_RIGHT_BUTTON);
 }
 
@@ -28,12 +37,12 @@ void display() {
     glClear(GL_COLOR_BUFFER_BIT);
 
     // Example: Draw a dark square
-    glColor3f(1.0, 0.0, 0.0);
-    glBegin(GL_QUADS);
+    glColor3f(R,G,B);
+    glBegin(GL_TRIANGLES);
         glVertex2f(-0.5, -0.5);
         glVertex2f(0.5, -0.5);
-        glVertex2f(0.5, 0.5);
-        glVertex2f(-0.5, 0.5);
+        glVertex2f(0.0, 0.5);
+        
     glEnd();
 
     glFlush(); // Ensure all OpenGL commands are executed

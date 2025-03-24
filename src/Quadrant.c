@@ -29,7 +29,7 @@ int main(int argc,char** argv){
     printf("Enter Co-ordinates of Bottom-Left Vertex ->\n");
     printf(" X1 :");
     scanf("%d",&xa);
-    printf(" Y1 :");
+    printf(" y_1 :");
     scanf("%d",&ya);
 
     printf("Enter Co-ordinates of Top-Right Vertex ->\n");

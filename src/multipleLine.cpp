@@ -5,7 +5,7 @@ using namespace std;
 int xa, ya,  xb,  yb;
 int count =0;
 struct Line{
-    int x1,y1;
+    int x1,y_1;
     int x2,y2;
 };
 
@@ -33,7 +33,7 @@ void Display(){
     glClear(GL_COLOR_BUFFER_BIT);
     glBegin(GL_LINES);
     for(Line temp: Lines){   
-        glVertex2d(temp.x1,temp.y1);
+        glVertex2d(temp.x1,temp.y_1);
         glVertex2d(temp.x2,temp.y2);   
     }
     glEnd();

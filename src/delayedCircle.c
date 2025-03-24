@@ -18,7 +18,7 @@ void plotPoints(int x, int y) {
     glFlush();
 }
 
-void drawCircle() {
+void BresCircle() {
     int x = 0;
     int y = r;
     int d = 3 - 2 * r;
@@ -43,7 +43,7 @@ void drawCircle() {
 
 void display() {
     glClear(GL_COLOR_BUFFER_BIT);
-    drawCircle();
+    BresCircle();
 }
 
 void init() {

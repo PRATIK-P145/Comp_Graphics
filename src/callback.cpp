@@ -2,7 +2,7 @@
 #include<GL/glut.h>
 using namespace std;
 
-int x1=100, y1=100;
+int x1=100, y_1=100;
 int xa,ya,xb,yb;
 float scale;
 
@@ -31,26 +31,26 @@ void draw(int x, int y){
 
 //     //glClear(GL_COLOR_BUFFER_BIT);
 
-//     draw(x1,y1,scale);
+//     draw(x1,y_1,scale);
 // }
 
 void drag(int x, int y){
     x1 = x;
-    y1 = 480-y;
+    y_1 = 480-y;
 
     glClear(GL_COLOR_BUFFER_BIT);
 
-    draw(x1, y1);
+    draw(x1, y_1);
 
 }
 void display(){
      glClear(GL_COLOR_BUFFER_BIT);
     glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     glBegin(GL_POLYGON);
-        glVertex2d(x1,y1);
-        glVertex2d(x1+200, y1);
-        glVertex2d(x1+200, y1+100);
-        glVertex2d(x1,y1+100);
+        glVertex2d(x1,y_1);
+        glVertex2d(x1+200, y_1);
+        glVertex2d(x1+200, y_1+100);
+        glVertex2d(x1,y_1+100);
     glEnd();
     glFlush();
 }

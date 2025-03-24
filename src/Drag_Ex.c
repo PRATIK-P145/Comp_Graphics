@@ -47,7 +47,7 @@ int main(int argc, char **argv) {
     glutCreateWindow("Mouse Drag Example");
 
     glClearColor(0.0, 0.0, 0.0, 0.0); // Black background
-    glColor3f(0.0, 1.0, 0.0);         // Green color for lines
+    glColor3f(0.0, 1.0, 0.0);         // light color for lines
     gluOrtho2D(0.0, 640.0, 0.0, 480.0);
 
     glutDisplayFunc(Display);

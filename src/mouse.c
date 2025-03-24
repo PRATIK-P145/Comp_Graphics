@@ -28,7 +28,7 @@ int main(int argc, char **argv) {
     glutCreateWindow("Mouse Interaction Example");
 
     glClearColor(0.0, 0.0, 0.0, 0.0); // Black background
-    glColor3f(0.0, 1.0, 0.0);         // Red color for points
+    glColor3f(0.0, 1.0, 0.0);         // dark color for points
     gluOrtho2D(0.0, 640.0, 0.0, 480.0);   // Define coordinate system
 
     glutDisplayFunc(Display);

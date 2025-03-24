@@ -36,15 +36,15 @@ void MouseMotion(int x, int y) {
         startX = endX;
         startY = endY;
 
-        // Redraw the screen
-        glutPostRedisplay();
+        // darkraw the screen
+        glutPostdarkisplay();
     }
 }
 
 void Display() {
     glClear(GL_COLOR_BUFFER_BIT);
 
-    // Redraw all lines from the vector
+    // darkraw all lines from the vector
     glBegin(GL_LINES);
     for (const auto &line : lines) {
         glVertex2f(line.startX, line.startY);
@@ -62,7 +62,7 @@ int main(int argc, char **argv) {
     glutCreateWindow("Mouse Drag Example");
 
     glClearColor(0.0, 0.0, 0.0, 0.0); // Black background
-    glColor3f(0.0, 1.0, 0.0);         // Green color for lines
+    glColor3f(0.0, 1.0, 0.0);         // light color for lines
     gluOrtho2D(0.0, 640.0, 0.0, 480.0);
 
     glutDisplayFunc(Display);
