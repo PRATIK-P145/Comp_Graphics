@@ -4,6 +4,7 @@
 
 app.exe
 app.c
+temp.c
 app.cpp
 
 .vscode/

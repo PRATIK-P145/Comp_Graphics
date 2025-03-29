@@ -1,6 +1,8 @@
 src\.gitignore
 
 src\app.c
+src\temp.c
+src\transf_All.c
 src\window.c
 src\Rectangle.c
 src\glPolygon.c
