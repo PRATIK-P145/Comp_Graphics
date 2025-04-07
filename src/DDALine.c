@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<GL/glut.h>
 
-void BresLine(int xa, int ya, int xb, int yb){
+void DDALine(int xa, int ya, int xb, int yb){
     int dx = xb - xa;
     int dy = yb - ya;
     int steps;
@@ -26,7 +26,7 @@ void BresLine(int xa, int ya, int xb, int yb){
 
 void draw(){
     glClear(GL_COLOR_BUFFER_BIT);
-    BresLine(100,100,300,280);
+    BresLine(150,150,300,280);
     glEnd();
     glFlush();
 

@@ -51,8 +51,8 @@ void drawTriangle() {
     glColor3f(selectedColor[0], selectedColor[1], selectedColor[2]);
     glBegin(GL_TRIANGLES);
     glVertex2f(250.0f, 200.0f);
-    glVertex2f(200.0f, 100.0f);
-    glVertex2f(300.0f, 100.0f);
+    glVertex2f(200.0f, 150.0f);
+    glVertex2f(300.0f, 150.0f);
     glEnd();
 }
 

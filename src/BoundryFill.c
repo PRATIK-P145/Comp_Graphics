@@ -65,7 +65,7 @@ void draw(){
 		
 		glFlush();
 		
-		BoundryFill(160,110);
+		BoundryFill(160,115);
 
 		
 }

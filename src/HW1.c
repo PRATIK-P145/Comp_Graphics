@@ -46,7 +46,7 @@ void Draw(){
     
     glClear(GL_COLOR_BUFFER_BIT);
     Rect(xa,ya,xb,yb);
-    //Rect(100,100,500,300);
+    //Rect(150,150,500,300);
 }
 
 

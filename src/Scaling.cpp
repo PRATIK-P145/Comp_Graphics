@@ -3,9 +3,9 @@
 #include<GL/glut.h>
 using namespace std;
 
-vector<vector<float>> input(3, vector<float>(10,0));
+vector<vector<float>> input(3, vector<float>(15,0));
 vector<vector<float>> scale(3, vector<float>(3,0));
-vector<vector<float>> output(3, vector<float>(10,0));
+vector<vector<float>> output(3, vector<float>(15,0));
 int v;
 
 void render(vector<vector<float>> &arr,int v ){

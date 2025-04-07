@@ -6,9 +6,9 @@
 #define M_PI 3.14159265358979323846
 int v;
 float xf, yf, radian;
-float input[3][10], output[3][10], t[3][3], s[3][3], r[3][3], Rx[3][3], Ry[3][3], Rxy[3][3], shx[3][3], shy[3][3];
+float input[3][15], output[3][15], t[3][3], s[3][3], r[3][3], Rx[3][3], Ry[3][3], Rxy[3][3], shx[3][3], shy[3][3];
 
-void mul(float input[3][10], float m[3][3], float output[3][10], int v) {
+void mul(float input[3][15], float m[3][3], float output[3][15], int v) {
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < v; j++) {
             output[i][j] = 0;
@@ -290,41 +290,7 @@ void Draw() {
             case 3:
                 Scaling();
                 break;
-            case 4:
-                
-                printf("1.Along Xaxis\n2.Along Y axis\n3.Along Origin\n4.Along x=y\n5.Along x=-y\n");
-                scanf("%d", &ref);
-                switch (ref) {
-                    case 1:
-                        Reflection_x();
-                        break;
-                    case 2:
-                        Reflection_y();
-                        break;
-                    case 3:
-                        Reflection_o();
-                        break;
-                    case 4:
-                        Reflection_xy();
-                        break;
-                    case 5:
-                        Reflection_xy1();
-                        break;
-                }
-                break;
-            case 5:
-               // int sh;
-                printf("1.Shearing along x\n2.Shearing along Y\n");
-                scanf("%d", &sh);
-                switch (sh) {
-                    case 1:
-                        Shearx();
-                        break;
-                    case 2:
-                        sheary();
-                        break;
-                }
-                break;
+            
         }
         glClear(GL_COLOR_BUFFER_BIT);
         glBegin(GL_POINTS);

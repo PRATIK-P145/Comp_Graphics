@@ -5,9 +5,9 @@
 #include<math.h>
 int xa,ya,xb,yb;
 int v;
-float ref[3][3],xshear[3][3],yshear[3][3],rotate[3][3],scale[3][3],tr[3][3],input[3][10],output[3][10];
+float ref[3][3],xshear[3][3],yshear[3][3],rotate[3][3],scale[3][3],tr[3][3],input[3][15],output[3][15];
 
-void mul(float input[3][10], float tr[3][3], float output[3][10], int v)
+void mul(float input[3][15], float tr[3][3], float output[3][15], int v)
 { 
      for(int i=0;i<3;i++)
     {

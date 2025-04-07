@@ -14,7 +14,7 @@ void Rectangle(int xa, int ya, int xb, int yb){
     glFlush();
 }
 void Draw(){
-    Rectangle(100,100,500,300);
+    Rectangle(150,150,500,300);
 }
 
 int main(int argc,char** argv){

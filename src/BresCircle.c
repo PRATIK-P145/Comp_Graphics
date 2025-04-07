@@ -28,7 +28,7 @@ void BresCircle(int xc, int yc, int r) {
         if (d < 0) {
             d = d + 4 * x + 6;
         } else {
-            d = d + 4 * (x - y) + 10;
+            d = d + 4 * (x - y) + 15;
             y--;
         }
         x++;
@@ -55,7 +55,7 @@ int main(int argc, char** argv) {
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
     glutInitWindowSize(500, 500); // Window size
-    glutInitWindowPosition(100, 100);
+    glutInitWindowPosition(150, 150);
     glutCreateWindow("Bresenham's Circle Drawing Algorithm with Delay");
     init();
     glutDisplayFunc(display);

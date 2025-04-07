@@ -2,7 +2,7 @@
 #include <math.h>
 
 const int windowWidth = 640, windowHeight = 480;
-const int radius = 100;
+const int radius = 150;
 
 
 void plotCirclePoints(int xc, int yc, int x, int y) {
@@ -31,7 +31,7 @@ void BresCircle(int xc, int yc, int r) {
             d = d + 4 * x + 6;
         } else {
             y--;
-            d = d + 4 * (x - y) + 10;
+            d = d + 4 * (x - y) + 15;
         }
     }
 }
@@ -91,7 +91,7 @@ int main(int argc, char** argv) {
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
     glutInitWindowSize(windowWidth, windowHeight);
-    glutInitWindowPosition(100, 100);
+    glutInitWindowPosition(150, 150);
     glutCreateWindow("Assign-4 : Bresnum Circle");
 
     init();

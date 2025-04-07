@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<GL/glut.h>
 
-int pos = 10;  // Initial position
+int pos = 15;  // Initial position
 int desc = 1;   // Direction of movement
 
 void display(){
@@ -9,10 +9,10 @@ void display(){
     glClear(GL_COLOR_BUFFER_BIT);
 
     glBegin(GL_QUADS);
-        glVertex2d(pos + 100, 100);
-        glVertex2d(pos - 100, 100);
-        glVertex2d(pos - 100, -100);
-        glVertex2d(pos + 100, -100);
+        glVertex2d(pos + 150, 150);
+        glVertex2d(pos - 150, 150);
+        glVertex2d(pos - 150, -150);
+        glVertex2d(pos + 150, -150);
     glEnd();
 
     glutSwapBuffers();  // Correct for double buffering

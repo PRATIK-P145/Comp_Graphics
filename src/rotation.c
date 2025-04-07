@@ -3,12 +3,12 @@
 #include<math.h>
 #define PI 3.14159265358979323846
 
-float inp[3][10];
+float inp[3][15];
 float R[3][3]={{0,0,0},{0,0,0},{0,0,1}};
-float out[3][10];
+float out[3][15];
 int v;
 
-void renderMtx(float arr[][10], int v){
+void renderMtx(float arr[][15], int v){
     for(int i=0; i<v; i++){
         glVertex2d(arr[0][i], arr[1][i]);
         glVertex2d(arr[0][i+1], arr[1][i+1]);
@@ -35,7 +35,7 @@ void draw(){
     glFlush();
 }
 
-void display(float arr[][10],int v){
+void display(float arr[][15],int v){
     for(int i=0; i<3; i++){
         printf("\n");
         for(int j=0; j<=v; j++){

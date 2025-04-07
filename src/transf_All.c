@@ -3,16 +3,33 @@
 #include<math.h>
 #define PI 3.14159265358979323846
 
-float input[3][10];
+float input[3][15] = {};
 float trans[3][3] = {{1,0,0},{0,1,0},{0,0,1}};
 float scale[3][3] = {{1,0,0},{0,1,0},{0,0,1}};
 float rotate[3][3] = {{1,0,0},{0,1,0},{0,0,1}};
-float output[3][10];
+float output[3][15] = {};
 int v;
-int ex=0,op;
+int op,ch;
+int flag = 0;
 
+void reset_mtx(float arr[3][15], int n){
+    for(int i=0; i<3; i++){
+        for(int j=0; j<=n; j++){
+            arr[i][j] = 0;
+        }
+    }
 
-void multiply(float inp[3][10], float t[3][3], float out[3][10], int n){
+}
+
+void copy_mtx(float arr1[3][15], float arr2[3][15], int n){
+    for(int i=0; i<3; i++){
+        for(int j=0; j<=n; j++){
+            arr1[i][j] = arr2[i][j];
+        }
+    }
+}
+
+void multiply(float inp[3][15], float t[3][3], float out[3][15], int n){
     
     for(int i=0; i<3; i++){
         for(int j=0; j<n; j++){
@@ -35,17 +52,9 @@ void DDALine(float x1, float y1, float x2, float y2){
     glEnd();
 }
 
-void render_mtx(float arr[3][10], int n){
+void render_mtx(float arr[3][15], int n){
     for(int i=0; i<n; i++){
         DDALine(arr[0][i], arr[1][i], arr[0][i+1], arr[1][i+1]);
-    }
-}
-
-void copy_mtx(float arr1[3][10], float arr2[3][10], int n){
-    for(int i=0; i<3; i++){
-        for(int j=0; j<=n; j++){
-            arr1[i][j] = arr2[i][j];
-        }
     }
 }
 
@@ -76,95 +85,11 @@ void rotation_mtx(){
 
 }
 
-void display(){
-    glClear(GL_COLOR_BUFFER_BIT);
-
-    glColor3f(1,0,0);
-    DDALine(-320,0,320,0);
-    DDALine(0,-240,0,240);
-
-    glColor3f(0,0,1);
-    render_mtx(input, v);
-
-    glColor3f(0,1,0);
-    render_mtx(output, v);
-
-    glutSwapBuffers();
-}
-
-void apply_transformations(int ch){
-    switch(ch){
-        case 1 : transl_mtx();
-            multiply(input, trans, output, v);
-            break;
-
-        case 2 : scale_mtx();
-            multiply(input, scale, output, v);
-            break;
-        
-        case 3 : rotation_mtx();
-            multiply(input, rotate, output, v);
-            break;
-
-        case 0 : ex = 1; exit(0);
-           break;
-
-        default :  printf("\nInvalid");
-
-    }
-    
-
-}
-
-void update(){
-    printf("\nSelect 2D Transformation to perform :");
-        printf("\n1.Translation");
-        printf("\n2.Scaling");
-        printf("\n3.Rotation");
-        printf("\n0.EXIT");
-        printf("\nPress Key Choice :");
-        scanf("%d",&op);
-
-        switch(op){
-            case 1:apply_transformations(1);
-                break;
-            case 2:apply_transformations(2);
-                break;
-            case 3:apply_transformations(3);
-                break;
-            case 0: apply_transformations(0);
-                break;
-            default:printf("\nInvalid Choice");
-        }
-        glutPostRedisplay();
-
-}
-
-
-
-// void key_press(unsigned char key, int x, int y){
-//     switch(key){
-//         case '1':apply_transformations(1);
-//             break;
-//         case '2':apply_transformations(2);
-//             break;
-//         case '3':apply_transformations(3);
-//             break;
-//         case '0': apply_transformations(0);
-//             break;
-//         default:printf("\nInvalid Choice");
-//     }
-
-// }
-
-
-
-
-
-int main(int argc, char** argv){
-    
-    printf("\nEnter no. of vertices :");
-    scanf("%d",&v);
+void input_polygon(){
+    do{
+        printf("\nEnter no. of vertices (max->15):");
+        scanf("%d",&v);
+    }while(v>15);
 
     for(int i=0; i<v; i++){
         printf("\nX%d :",i+1);
@@ -177,7 +102,82 @@ int main(int argc, char** argv){
     input[1][v] = input[1][0];
     input[2][v] = input[2][0];
         
+}
+
+void display(){
+    glClear(GL_COLOR_BUFFER_BIT);
+
+    glColor3f(1,0,0);
+    DDALine(-320,0,320,0);
+    DDALine(0,-240,0,240);
+
+    if(flag==0){
+     glColor3f(0,0,1);
+     render_mtx(input, v);
+
+     glColor3f(0,1,0);
+     render_mtx(output, v);
+
+    }
+    glutSwapBuffers();
+}
+
+
+void update(){
+    if(flag==1){
+        printf("\n1.Input Polygon");
+        printf("\n0.Close Window");
+        printf("\nEnter Choice :");
+        scanf("%d",&ch);
+
+        switch(ch){
+            case 1: input_polygon();
+                    reset_mtx(output,v);
+                    flag = 0;
+                    break;
+
+            case 0: exit(0);
+                    break;
+
+            default: printf("\nInvalid Choice");
+        }
+    }
+    else{
+    printf("\nSelect 2D Transformation to perform :");
+        printf("\n1.Translation");
+        printf("\n2.Scaling");
+        printf("\n3.Rotation");
+        printf("\n0.Clear Screen");
+        printf("\nPress Key Choice :");
+        scanf("%d",&op);
+
+    switch(op){
+        case 1 : transl_mtx();
+            multiply(input, trans, output, v);
+            break;
+
+        case 2 : scale_mtx();
+            multiply(input, scale, output, v);
+            break;
+        
+        case 3 : rotation_mtx();
+            multiply(input, rotate, output, v);
+            break;
+
+        case 0: glClear(GL_COLOR_BUFFER_BIT);
+             flag = 1;
+            break;
+
+        default:printf("\nInvalid Choice");
+
+        }
+    }
+        glutPostRedisplay();
+
+}
+int main(int argc, char** argv){
     
+    input_polygon();
 
     glutInit (&argc , argv);
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
@@ -193,7 +193,6 @@ int main(int argc, char** argv){
     gluOrtho2D(-320,320,-240,240);
 
     glutDisplayFunc(display);
-    //glutKeyboardFunc(key_press);
     glutIdleFunc(update);
     glutMainLoop();
 

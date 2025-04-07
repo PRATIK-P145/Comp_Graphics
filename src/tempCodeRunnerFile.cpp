@@ -16,9 +16,9 @@ void multiply(vector<vector<float>> &inp, vector<vector<float>> &sc, vector<vect
 }
 
 int main(){
-    vector<vector<float>> input(2, vector<float>(10,0));
+    vector<vector<float>> input(2, vector<float>(15,0));
     vector<vector<float>> scale(2, vector<float>(2,0));
-    vector<vector<float>> output(2, vector<float>(10,0));
+    vector<vector<float>> output(2, vector<float>(15,0));
     int v;
     float sx,sy;
 

@@ -5,11 +5,11 @@ using namespace std;
 
 int v =3;
 
-vector<vector<int>> inp(3, vector<int>(10,0));
+vector<vector<int>> inp(3, vector<int>(15,0));
 vector<vector<int>> T(3,vector<int>(3,0));
-vector<vector<int>> out(3,vector<int>(10,0));
+vector<vector<int>> out(3,vector<int>(15,0));
 
-//using Matrix = array<array<int, 10>, 3>;
+//using Matrix = array<array<int, 15>, 3>;
 //void input(vector<vector<int>> &A,int v){
 
 
@@ -31,8 +31,8 @@ void draw(){
         glVertex2d(0,-230);
         glVertex2d(0,230);
 
-        glVertex2d(-310,0);
-        glVertex2d(310,0);
+        glVertex2d(-315,0);
+        glVertex2d(315,0);
 
     glEnd();
     glFlush();

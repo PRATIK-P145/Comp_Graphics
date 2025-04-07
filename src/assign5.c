@@ -5,7 +5,7 @@
 float backcol[3];
 float bcol[3];
 float fcol[3];
-int input[2][10];
+int input[2][15];
 int v, x, y, xa, ya, xb, yb, ch;
 
 void Bfill(int x, int y, float bcol[3], float fcol[3]) {

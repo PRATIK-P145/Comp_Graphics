@@ -12,13 +12,13 @@ void Draw(){
         glVertex2d(0,-230);
         glVertex2d(0,230);
 
-        glVertex2d(-310,0);
-        glVertex2d(310,0);
+        glVertex2d(-315,0);
+        glVertex2d(315,0);
 
     glEnd();
     glFlush();
    // 
-    //Rect(100,100,500,300);
+    //Rect(150,150,500,300);
 }
 
 

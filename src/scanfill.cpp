@@ -13,8 +13,8 @@ struct Vertex {
 
 // Define the polygon vertices
 vector<Vertex> polygon = {
-    {100.0f, 100.0f},
-    {200.0f, 100.0f},
+    {150.0f, 150.0f},
+    {200.0f, 150.0f},
     {250.0f, 200.0f},
     {150.0f, 300.0f},
     {50.0f, 200.0f}

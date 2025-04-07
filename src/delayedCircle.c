@@ -29,7 +29,7 @@ void BresCircle() {
         if (d <= 0) {
             d = d + 4 * x + 6;
         } else {
-            d = d + 4 * (x - y) + 10;
+            d = d + 4 * (x - y) + 15;
             y--;
         }
         x++;
@@ -61,7 +61,7 @@ int main(int argc, char** argv) {
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
     glutInitWindowSize(800, 800);
-    glutInitWindowPosition(100, 100);
+    glutInitWindowPosition(150, 150);
     glutCreateWindow("Bresenham Circle (Real-Time)");
     init();
     glutDisplayFunc(display);

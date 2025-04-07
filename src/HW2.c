@@ -31,7 +31,7 @@ void BresCircle(int xc, int yc, int r) {
         if (d < 0) {
             d = d + 4 * x + 6;
         } else {
-            d = d + 4 * (x - y) + 10;
+            d = d + 4 * (x - y) + 15;
             y--;
         }
         x++;

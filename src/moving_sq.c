@@ -5,10 +5,10 @@ int direction = 1;    // 1 = move right, -1 = move left
 
 void drawSquare(float x, float y) {
     glBegin(GL_QUADS);
-        glVertex2f(x - 10, y - 10);
-        glVertex2f(x + 10, y - 10);
-        glVertex2f(x + 10, y + 10);
-        glVertex2f(x - 10, y + 10);
+        glVertex2f(x - 15, y - 15);
+        glVertex2f(x + 15, y - 15);
+        glVertex2f(x + 15, y + 15);
+        glVertex2f(x - 15, y + 15);
     glEnd();
 }
 
@@ -46,12 +46,12 @@ int main(int argc, char** argv) {
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
     glutInitWindowSize(500, 500);
-    glutInitWindowPosition(100, 100);
+    glutInitWindowPosition(150, 150);
 
     glutCreateWindow("Square Moving with glutIdleFunc");
 
     glClearColor(0.0, 0.0, 0.0, 1.0);  // Background color
-    gluOrtho2D(-100, 100, -100, 100);
+    gluOrtho2D(-150, 150, -150, 150);
 
     glutDisplayFunc(display);     // Register display callback
     //glutIdleFunc(update);         // Register idle callback
