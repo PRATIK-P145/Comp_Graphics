@@ -37,7 +37,7 @@ void MouseMotion(int x, int y) {
         startY = endY;
 
         // darkraw the screen
-        glutPostdarkisplay();
+        glutPostRedisplay();
     }
 }
 

@@ -32,7 +32,6 @@ void BresCircle(int xc, int yc, int r) {
             y--;
         }
         x++;
-        Sleep(50); // Delay of 50 milliseconds
     }
 }
 

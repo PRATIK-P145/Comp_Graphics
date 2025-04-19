@@ -26,7 +26,14 @@ void DDALine(int xa, int ya, int xb, int yb){
 
 void draw(){
     glClear(GL_COLOR_BUFFER_BIT);
-    BresLine(150,150,300,280);
+    glColor3f(1,0,0);
+DDAline(100,100,400,200);
+glColor3f(0,1,0);
+DDALine(100,100,200,400); // half-drawn
+glColor3f(0,0,1);
+Bline(100,100,400,50);
+glColor3f(0,1,1);
+Bline(100,100,50,400);
     glEnd();
     glFlush();
 
