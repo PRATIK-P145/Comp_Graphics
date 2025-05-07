@@ -184,7 +184,6 @@ int main(int argc, char** argv){
 
     glutInitWindowPosition(0,0);
     glutInitWindowSize(640,480);
-
     glutCreateWindow("2D Transformations ");
 
     glClearColor(0.0, 0.0, 0.0, 0);  // Background Color

@@ -33,6 +33,7 @@ void floodFill(int x, int y, float fcol[3], float backcol[3]) {
 
     if ((current[0] == backcol[0] && current[1] == backcol[1] && current[2] == backcol[2]) &&
         (current[0] != fcol[0] || current[1] != fcol[1] || current[2] != fcol[2])) {
+            
         glColor3f(fcol[0], fcol[1], fcol[2]);
         glBegin(GL_POINTS);
         glVertex2d(x, y);

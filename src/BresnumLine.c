@@ -21,7 +21,7 @@ void Bline(int xa,int ya,int xb,int yb){
       while(f>x){ // Loop until xmin reaches xmax
         // Bresenham condition
         if(d<0){     
-            d += 2*abs(dy);
+            d += 2*abs(dy); 
         }
         else{
             // Positive Slope : Incr Y
@@ -80,13 +80,16 @@ void draw(){
     glClear(GL_COLOR_BUFFER_BIT);
     glBegin(GL_POINTS);
     glColor3f(1,0,0);
-    Bline(100,100,400,200);
+    Bline(100,100,400,200); // Gentle - Positive
     glColor3f(0,1,0);
-    Bline(100,100,200,400);
+
+    Bline(100,100,200,400); // Sharp - Positive
     glColor3f(0,0,1);
-    Bline(100,100,400,50);
+
+    Bline(100,100,400,50); // Gentle - Negative
     glColor3f(0,1,1);
-    Bline(100,100,50,400);
+
+    Bline(100,100,50,400); // Sharp - Negative
     glEnd();
     glFlush();
 }
@@ -94,12 +97,16 @@ void draw(){
 int main(int argc,char** argv){
     glutInit(&argc,argv);
     glutInitDisplayMode(GLUT_SINGLE |GLUT_RGB);
+
     glutInitWindowPosition(0,0);
     glutInitWindowSize(680,460);
     glutCreateWindow("Bres_Line");
+
     glClearColor(1,1,1,0);
     glColor3f(0,0,0);
+
     gluOrtho2D(0,680,0,460);
+
     glutDisplayFunc(draw);
     glutMainLoop();
     

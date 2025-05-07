@@ -2,6 +2,8 @@ src\.gitignore
 
 src\app.c
 src\temp.c
+src\app.cpp
+src\pentagram.c
 src\transf_All.c
 src\window.c
 src\Rectangle.c
@@ -21,7 +23,7 @@ src\rotation.c
 
 src\app.exe
 
-src\app.cpp
+
 
 src\Scaling.cpp
 src\translation.cpp

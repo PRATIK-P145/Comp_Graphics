@@ -116,7 +116,7 @@ void redo() {
     }
 }
 
-// Draw a point on canvas
+
 void drawPoint(int x, int y) {
     if (x >= 0 && x < WIDTH - GUI_PANEL_WIDTH && y >= 0 && y < HEIGHT) {
         if (currentTool == ERASER) {
@@ -131,39 +131,80 @@ void drawPoint(int x, int y) {
     }
 }
 
-// Draw a line using Bresenham's algorithm
-void drawLine(int x0, int y0, int x1, int y1) {
-    bool steep = abs(y1 - y0) > abs(x1 - x0);
-    if (steep) {
-        std::swap(x0, y0);
-        std::swap(x1, y1);
-    }
-    if (x0 > x1) {
-        std::swap(x0, x1);
-        std::swap(y0, y1);
-    }
-
-    int dx = x1 - x0;
-    int dy = abs(y1 - y0);
-    int error = dx / 2;
-    int ystep = (y0 < y1) ? 1 : -1;
-    int y = y0;
-
-    for (int x = x0; x <= x1; x++) {
-        if (steep) {
-            drawPoint(y, x);
-        } else {
-            drawPoint(x, y);
+void drawLine(int xa, int ya, int xb, int yb) {
+    int dx = xb-xa;
+  int dy = yb-ya;
+  int d,x,y,f;
+  
+   // GENTLE Slope Condition (dx>dy)
+  if(abs(dx)>abs(dy)){    
+      d = 2*abs(dy)-abs(dx); // Initial Decision Parameter
+      
+     // swap if inputs are reverse (Right -> Left)
+      if(dx>0){   
+          x=xa; y=ya; f=xb;
+      }
+      else{
+          x=xb; y=yb; f=xa;
+      }
+      
+      while(f>x){ // Loop until xmin reaches xmax
+        // Bresenham condition
+        if(d<0){     
+            d += 2*abs(dy);
         }
-        error -= dy;
-        if (error < 0) {
-            y += ystep;
-            error += dx;
+        else{
+            // Positive Slope : Incr Y
+            if(dx>0 && dy>0 || dx<0 && dy<0) {  
+                y=y+1;
+            }
+            // Negative Slope : Decr Y
+            else{    
+                y=y-1;
+            } 
+            d += 2*abs(dy)-2*abs(dx);
         }
-    }
+        x = x+1;  // always incr X
+        drawPoint(x,y);
+      }
+  }
+//----------------------------------------------------------//
+  // SHARP Slope (dy>dx)
+  else{
+    d = 2*abs(dx)-abs(dy);
+      
+      if(dy>0){  
+          x=xa; y=ya; f=yb;
+      }
+      else{   // swap if inputs are Reverse i.e. right -> left
+          x=xb; y=yb; f=ya;
+      }
+      
+    //Loop until ymin reaches ymax
+      while(f>y){
+
+        if(d<0){
+            d = d+2*abs(dx);
+        }
+        else{
+            // Positive Slope : Incr X
+            if(dx>0 && dy>0 || dx<0 && dy<0){
+                x=x+1;
+            }
+            // Negative Slope : Decr X
+            else{
+                x=x-1;
+            } 
+            d=d+2*abs(dx)-2*abs(dy);
+        }
+        y=y+1; 
+        drawPoint(x,y);
+      }
+  
+  }
+  
 }
 
-// Draw a rectangle
 void drawRectangle(int x0, int y0, int x1, int y1) {
     drawLine(x0, y0, x1, y0);
     drawLine(x1, y0, x1, y1);
@@ -171,27 +212,33 @@ void drawRectangle(int x0, int y0, int x1, int y1) {
     drawLine(x0, y1, x0, y0);
 }
 
-// Draw a circle using midpoint algorithm
-void drawCircle(int xc, int yc, int radius) {
-    int x = 0;
-    int y = radius;
-    int d = 3 - 2 * radius;
+void plotCirclePoints(int xc, int yc, int x, int y) {
+    glBegin(GL_POINTS);
+    drawPoint(xc + x, yc + y);
+    drawPoint(xc - x, yc + y);
+    drawPoint(xc + x, yc - y);
+    drawPoint(xc - x, yc - y);
+    drawPoint(xc + y, yc + x);
+    drawPoint(xc - y, yc + x);
+    drawPoint(xc + y, yc - x);
+    drawPoint(xc - y, yc - x);
+    glEnd();
+}
 
-    while (y >= x) {
-        drawPoint(xc + x, yc + y);
-        drawPoint(xc - x, yc + y);
-        drawPoint(xc + x, yc - y);
-        drawPoint(xc - x, yc - y);
-        drawPoint(xc + y, yc + x);
-        drawPoint(xc - y, yc + x);
-        drawPoint(xc + y, yc - x);
-        drawPoint(xc - y, yc - x);
 
-        if (d > 0) {
-            y--;
-            d = d + 4 * (x - y) + 10;
-        } else {
+void drawCircle(int xc, int yc, int r) {
+   int x = 0, y = r;
+    int d = 3 - 2 * r; // Decision parameter
+
+    while (x <= y) {
+        plotCirclePoints(xc, yc, x, y);
+        glFlush(); // Update display after plotting points
+
+        if (d < 0) {
             d = d + 4 * x + 6;
+        } else {
+            d = d + 4 * (x - y) + 15;
+            y--;
         }
         x++;
     }
@@ -370,7 +417,7 @@ bool isInButton(int x, int y, int buttonX, int buttonY, int width, int height) {
     return x >= buttonX && x <= buttonX + width && y >= buttonY && y <= buttonY + height;
 }
 
-// Mouse callback function
+
 void mouse(int button, int state, int x, int y) {
     y = HEIGHT - y; // Flip y coordinate to match OpenGL coordinates
     
@@ -473,7 +520,7 @@ void mouse(int button, int state, int x, int y) {
     }
 }
 
-// Mouse motion callback function
+
 void motion(int x, int y) {
     y = HEIGHT - y; // Flip y coordinate
     
@@ -501,7 +548,7 @@ void motion(int x, int y) {
     }
 }
 
-// Passive mouse motion callback (for hover effects)
+
 void passiveMotion(int x, int y) {
     y = HEIGHT - y; // Flip y coordinate
     
@@ -519,7 +566,7 @@ void passiveMotion(int x, int y) {
     }
 }
 
-// Keyboard callback function
+
 void keyboard(unsigned char key, int x, int y) {
     switch (tolower(key)) {
         case 'p': currentTool = PENCIL; printf("Pencil tool selected\n"); break;
@@ -537,7 +584,7 @@ void keyboard(unsigned char key, int x, int y) {
     glutPostRedisplay();
 }
 
-// Initialize OpenGL
+
 void init() {
     glClearColor(bgColor[0], bgColor[1], bgColor[2], 1.0f);
     glMatrixMode(GL_PROJECTION);

@@ -27,7 +27,7 @@ void BoundryFill(int x, int y, float bColor[3], float fillColor[3]){
 	glReadPixels(x, y, 1.0,1.0,  GL_RGB, GL_FLOAT, current);
 	
 	if( (current[0]!= bColor[0] || current[1]!= bColor[1] || current[2]!= bColor[2] ) &&
-             (current[0]!= fillColor[0] || current[1]!= fillColor[1]  || current[2]!= bColor[2])  )
+             (current[0]!= fillColor[0] || current[1]!= fillColor[1]  || current[2]!= fillColor[2])  )
         {  
         	glColor3f(fillColor[0],fillColor[1], fillColor[2]);
         	glBegin(GL_POINTS);

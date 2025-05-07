@@ -2,8 +2,8 @@
 #include<GL/glut.h>
 
 
-int inp[3][10];
-int out[3][10];
+int inp[3][15];
+int out[3][15];
 float sc[3][3] = { {0, 0, 0}, {0, 0, 0}, {0, 0, 1}};
 int v,xf,yf;
 float sx, sy;
@@ -125,7 +125,7 @@ void main(int argc, char** argv){
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
 	
-	glutInitWindowPosition(100,100);
+	glutInitWindowPosition(150,150);
 	glutInitWindowSize(640,480);
 	glutCreateWindow("Scaling");
 	
